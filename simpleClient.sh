@@ -7,6 +7,11 @@ mySlug=hva-evts
 # get my agenda uid
 wget $wgetOpt https://api.openagenda.com/v1/agendas/uid/$mySlug?key=$myKey 2>/dev/null
 
+echo ' ' 
+
+# get my agenda all evts
+wget $wgetOpt https://api.openagenda.com/v1/agendas/18389556?key=$myKey 2>/dev/null
+
 
 
 
