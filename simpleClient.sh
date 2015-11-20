@@ -1,11 +1,11 @@
-#!/bin/sh -x
+#!/bin/sh
 
 wgetOpt=-O-
 myKey=44ce07402c4c21ca26071733f9c80077
-mySlug=hva-evts
+agendaSlug=hva-evts
 
 # get my agenda uid
-wget $wgetOpt https://api.openagenda.com/v1/agendas/uid/$mySlug?key=$myKey 2>/dev/null
+wget $wgetOpt https://api.openagenda.com/v1/agendas/uid/$agendaSlug?key=$myKey 2>/dev/null
 
 echo ' ' 
 
