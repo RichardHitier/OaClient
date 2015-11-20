@@ -1,9 +1,11 @@
 #!/bin/sh
 
 action=$1
+mode=$2
 
 wgetOpt=-O-
 wgetBin="wget $wgetOpt "
+wgetTest="echo wget $wgetOpt "
 myKey=44ce07402c4c21ca26071733f9c80077
 agendaSlug=hva-evts
 agendaUid=18389556
@@ -12,16 +14,22 @@ eventUid=293467
 help()
 {
 cat << .END
-Usage:
-$0 [action] where action is one of
-    agendauid
-    agendadesc
-    agendaevts
-    eventdata
+Usage: $0 [action] <mode>
+where action is one of
+    'agendauid'
+    'agendadesc'
+    'agendaevts'
+    'eventdata'
+and mode can be 
+    'test'
 .END
 }
 
 [ 'x' = 'x'$action ] && help && exit
+if [ "x$mode" = "xtest" ]
+then
+    wgetBin=$wgetTest
+fi
 
 case "$action" in
 
