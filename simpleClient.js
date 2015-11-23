@@ -3,6 +3,9 @@ var https=require('https');
 var host='api.openagenda.com';
 var myKey='44ce07402c4c21ca26071733f9c80077';
 var agendaSlug='hva-evts';
+var agendaUid='hva-evts';
+var agendaUid='18389556';
+var eventUid='293467';
 
 
 function oaGetter( getOptions, endCallback){
@@ -34,11 +37,12 @@ function oaGetter( getOptions, endCallback){
 
 }
 
-oaGetter( {
-    host: host,
-    path: '/v1/agendas/uid/'+agendaSlug+'?key='+myKey
-    },
-    function(str){
-        console.log('uid: '+JSON.parse(str).data.uid);
-    }
+oaGetter(
+        { host: host, path: '/v1/agendas/uid/'+agendaSlug+'?key='+myKey },
+        function(str){ console.log('uid: '+JSON.parse(str).data.uid); }
+);
+oaGetter(
+        { host: host, path: '/v1/agendas/'+agendaUid+'?key='+myKey },
+        //function(str){ console.log('uid: '+JSON.parse(str).data.uid); }
+        function(str){ console.log(JSON.parse(str).data);}
 );
