@@ -43,6 +43,13 @@ oaGetter(
 );
 oaGetter(
         { host: host, path: '/v1/agendas/'+agendaUid+'?key='+myKey },
-        //function(str){ console.log('uid: '+JSON.parse(str).data.uid); }
+        function(str){ console.log(JSON.parse(str).data);}
+);
+oaGetter(
+        { host: host, path: '/v1/agendas/'+agendaUid+'/events?key='+myKey },
+        function(str){ console.log(JSON.parse(str).data);}
+);
+oaGetter(
+        { host: host, path: '/v1/events/'+eventUid+'?key='+myKey },
         function(str){ console.log(JSON.parse(str).data);}
 );
