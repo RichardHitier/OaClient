@@ -35,22 +35,23 @@ function oaGetter( getOptions, endCallback){
     });
 }
 
-oaGetter(
-        { host: host, path: '/v1/agendas/uid/'+agendaSlug+'?key='+myKey },
-        function(str){ console.log('uid: '+JSON.parse(str).data.uid); }
-);
+var methods={
+    agendauid: {
+        options: { host: host, path: '/v1/agendas/uid/'+agendaSlug+'?key='+myKey },
+        callback: function(str){ console.log('uid: '+JSON.parse(str).data.uid); }
+    },
+    agendadesc: {
+        options: { host: host, path: '/v1/agendas/'+agendaUid+'?key='+myKey },
+        callback: function(str){ console.log(JSON.parse(str).data);}
+    },
+    agendaevts: {
+        options: { host: host, path: '/v1/agendas/'+agendaUid+'/events?key='+myKey },
+        callback: function(str){ console.log(JSON.parse(str).data);}
+    },
+    eventdesc: {
+        options: { host: host, path: '/v1/events/'+eventUid+'?key='+myKey },
+        callback: function(str){ console.log(JSON.parse(str).data);}
+    }
+}
 
-oaGetter(
-        { host: host, path: '/v1/agendas/'+agendaUid+'?key='+myKey },
-        function(str){ console.log(JSON.parse(str).data);}
-);
-
-oaGetter(
-        { host: host, path: '/v1/agendas/'+agendaUid+'/events?key='+myKey },
-        function(str){ console.log(JSON.parse(str).data);}
-);
-
-oaGetter(
-        { host: host, path: '/v1/events/'+eventUid+'?key='+myKey },
-        function(str){ console.log(JSON.parse(str).data);}
-);
+oaGetter( methods.agendauid.options, methods.agendauid.callback);
