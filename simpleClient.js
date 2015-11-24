@@ -54,4 +54,27 @@ var methods={
     }
 }
 
-oaGetter( methods.agendauid.options, methods.agendauid.callback);
+function help( message ){
+    console.log(message);
+    console.log("simpleClient Usage:\n"
+            +"simpleClient <option>\n"
+            +"where option is one of\n");
+    for(var method in methods ){
+        console.log(method);
+    }
+}
+
+function runme(){
+    if ( process.argv.length < 3 ){
+        help("missing arg");
+        return;
+    }
+    var method = process.argv[2];
+    if ( ! methods.hasOwnProperty(method) ){
+        help("wrong arg "+method);
+        return;
+    }
+    oaGetter( methods[method].options, methods[method].callback);
+}
+
+runme();
