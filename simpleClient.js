@@ -9,7 +9,6 @@ var eventUid='293467';
 
 
 function oaGetter( getOptions, endCallback){
-
     var req=https.get( getOptions, function(res){
         var str='';
         if( res.statusCode != 200){
@@ -34,21 +33,23 @@ function oaGetter( getOptions, endCallback){
     req.on('error', function(e){
         console.log('ERROR: '+e.message);
     });
-
 }
 
 oaGetter(
         { host: host, path: '/v1/agendas/uid/'+agendaSlug+'?key='+myKey },
         function(str){ console.log('uid: '+JSON.parse(str).data.uid); }
 );
+
 oaGetter(
         { host: host, path: '/v1/agendas/'+agendaUid+'?key='+myKey },
         function(str){ console.log(JSON.parse(str).data);}
 );
+
 oaGetter(
         { host: host, path: '/v1/agendas/'+agendaUid+'/events?key='+myKey },
         function(str){ console.log(JSON.parse(str).data);}
 );
+
 oaGetter(
         { host: host, path: '/v1/events/'+eventUid+'?key='+myKey },
         function(str){ console.log(JSON.parse(str).data);}
