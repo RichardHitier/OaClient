@@ -69,12 +69,15 @@ function oaGetter(method){
 
 function help( message ){
     console.log(message);
-    console.log("simpleClient Usage:\n"
-            +"simpleClient <option>\n"
-            +"where option is one of\n");
+    console.log('simpleClient Usage:\n'
+            +'simpleClient <method> ["fake"]\n'
+            +'where option is one of\n');
     for(var method in methods ){
-        console.log(method);
+        console.log('  '+method);
     }
+    console.log('');
+    console.log('"fake" option allows to show inner json'
+            +' without actually reqesting');
 }
 
 function runme(){
@@ -87,7 +90,10 @@ function runme(){
         help("wrong arg "+method);
         return;
     }
-    oaGetterFake( method );
+    if( 'fake' === process.argv[3] )
+        oaGetterFake( method );
+    else
+        oaGetter(method);
 }
 
 runme();
