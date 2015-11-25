@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Évènements HVA: formulaire simple</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <script src="lib/angular.min.js"> </script>
+    <script src="js/simpleForm.js"> </script>
+  </head>
+
+  <body ng-app="oaApp" ng-controller="oaCtl">
+      <button ng-click="show()">Montre l'agenda</button>
+      <h1>{{agendadesc.data.title}}</h1>
+  </body>
+
+</html>
