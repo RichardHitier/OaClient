@@ -8,7 +8,10 @@ var agendaUid='18389556';
 var eventUid='293467';
 
 
-function oaGetter( getOptions, endCallback){
+}
+function oaGetter(method){
+    getOptions=methods[method].options;
+    endCallback=methods[method].callback;
     var req=https.get( getOptions, function(res){
         var str='';
         if( res.statusCode != 200){
