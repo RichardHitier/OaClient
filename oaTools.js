@@ -1,3 +1,9 @@
+/**
+ * OpenAgenda simple requester lib
+ *
+ * provides a fake requester that will return static json
+ * without real request.
+ */
 var https=require('https');
 
 var host='api.openagenda.com';

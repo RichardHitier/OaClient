@@ -1,3 +1,9 @@
+/**
+ * OaTools commandline tester
+ *
+ * run with no arg for help.
+ */
+
 var oatools=require('./oaTools');
 
 function help( message ){
