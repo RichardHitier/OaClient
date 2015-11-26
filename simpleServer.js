@@ -1,6 +1,9 @@
-var express = require( 'express');
 var oatools = require( './oaTools.js');
+var express = require( 'express');
+var bodyParser = require( 'body-parser');
 var app = express();
+
+app.use(bodyParser.json());
 
 app.use('/lib', express.static(__dirname+'/lib/'));
 app.use('/js', express.static(__dirname+'/js/'));
@@ -12,6 +15,12 @@ var agendadesc={"success":true,"code":200,"data":{"title":"\u00c9v\u00e8nements 
 // Routing
 app.get('/', function( req, res){
     res.sendFile(__dirname+'/simpleForm.html');
+});
+
+app.post('/api/addevt', function( req, res){
+    console.log('got addevt call');
+    console.log(req.body);
+    res.send();
 });
 
 app.get('/api/:method', function( req, res ){

@@ -2,6 +2,7 @@
     "name": "OaClient",
     "version": "0.1.0",
     "dependencies": {
-        "express": "~4.13"
+        "express": "~4.13",
+        "body-parser": "~1.14.0"
     }
 }
