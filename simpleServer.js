@@ -1,4 +1,5 @@
 var express = require( 'express');
+var oatools = require( './oaTools.js');
 var app = express();
 
 app.use('/lib', express.static(__dirname+'/lib/'));
@@ -14,7 +15,9 @@ app.get('/', function( req, res){
 });
 
 app.get('/api/agendadesc', function( req, res ){
-    res.json(agendadesc);
+    oatools.oaGetter( 'agendadesc', function(jsonFromOuterSpace){
+        res.json(jsonFromOuterSpace);
+    });
 });
 
 app.listen(8080);
