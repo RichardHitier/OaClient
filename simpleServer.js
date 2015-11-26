@@ -20,4 +20,10 @@ app.get('/api/agendadesc', function( req, res ){
     });
 });
 
+app.get('/api/agendaevts', function( req, res ){
+    oatools.oaGetter( 'agendaevts', function(jsonFromOuterSpace){
+        res.json(jsonFromOuterSpace);
+    });
+});
+
 app.listen(8080);
