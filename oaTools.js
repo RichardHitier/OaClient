@@ -37,40 +37,39 @@ var methods={
 }
 
 
-function oaGetterFake(method){
+function oaGetterFake(method, callback){
     fakejson=JSON.stringify(methods[method].fake);
-    endCallback=methods[method].callback;
-    endCallback( fakejson);
-
+    //endCallback=methods[method].callback;
+    callback( fakejson);
 }
 
-function oaGetter(method){
+function oaGetter(method, callback){
     getOptions=methods[method].options;
-    endCallback=methods[method].callback;
+    //endCallback=methods[method].callback;
     var req=https.get( getOptions, function(res){
         var str='';
         if( res.statusCode != 200){
             console.log('STATUS: ' + res.statusCode);
-            return;
+            return; //todo callback with error
         }
         //console.log('HEADERS: ' + JSON.stringify(res.headers, null, 3));
         if( res.headers['content-type'].indexOf('application/json') < 0){
             console.log('Not JSON: ' + res.headers['content-type']);
-            return;
+            return; //todo callback with error
         }
         res.on('data', function(chunk){
             str+=chunk;
         });
         res.on('end', function(){
-            endCallback(str);
+            console.log('dowe end');
+            callback(str);
         });
     });
 
-
-
     req.on('error', function(e){
-        console.log('ERROR: '+e.message);
+        console.log('ERROR: '+e.message); //todo callback with error
     });
+
 }
 
 exports.oaGetterFake = oaGetterFake;
