@@ -14,14 +14,8 @@ app.get('/', function( req, res){
     res.sendFile(__dirname+'/simpleForm.html');
 });
 
-app.get('/api/agendadesc', function( req, res ){
-    oatools.oaGetter( 'agendadesc', function(jsonFromOuterSpace){
-        res.json(jsonFromOuterSpace);
-    });
-});
-
-app.get('/api/agendaevts', function( req, res ){
-    oatools.oaGetter( 'agendaevts', function(jsonFromOuterSpace){
+app.get('/api/:method', function( req, res ){
+    oatools.oaGetter( req.params.method, function(jsonFromOuterSpace){
         res.json(jsonFromOuterSpace);
     });
 });
