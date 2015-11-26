@@ -13,10 +13,13 @@
       <button ng-click="showEvts()">Évènements</button>
       <span>{{waiting}}</span>
       <h1>{{agendadesc.data.title}} ({{agendadesc.data.uid}})</h1>
-      <ul>
-          <li ng-repeat="evt in agendaevts.data">
-              <a href="{{evt.link}}">{{evt.title.fr}}</a></li>
-      </ul>
+      <table>
+          <tr ng-repeat="evt in agendaevts.data | orderBy:'-locations[0].dates[0].date'">
+              <td>{{evt.locations[0].dates[0].date}}</td>
+              <td>{{evt.locations[0].dates[0].timeStart}}</td>
+              <td><a href="{{evt.link}}">{{evt.title.fr}}</a></td>
+          </tr>
+      </table>
   </body>
 
 </html>
