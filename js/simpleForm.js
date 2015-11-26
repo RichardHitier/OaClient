@@ -53,6 +53,11 @@ app.controller('oaCtl', function($scope, $http){
         })
     };
     $scope.addEvt=function(){
-        $scope.waiting="new evt title: "+$scope.agendaevt.title;
+        $scope.waiting="adding new evt";
+        $http.post('/api/addevt', $scope.agendaevt)
+            .success(function(data){
+                $scope.agendaevt={};
+                $scope.waiting='';
+            });
     };
 });
