@@ -14,7 +14,7 @@
       <h1>{{agendadesc.data.title}} ({{agendadesc.data.uid}})</h1>
       <ul>
           <li ng-repeat="evt in agendaevts.data">
-              {{evt.title.fr}} </li>
+              <a href="{{evt.link}}">{{evt.title.fr}}</a></li>
       </ul>
   </body>
 
