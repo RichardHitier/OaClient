@@ -10,7 +10,12 @@
 
   <body ng-app="oaApp" ng-controller="oaCtl">
       <button ng-click="show()">Montre l'agenda</button>
+      <button ng-click="showEvts()">Évènements</button>
       <h1>{{agendadesc.data.title}} ({{agendadesc.data.uid}})</h1>
+      <ul>
+          <li ng-repeat="evt in agendaevts.data">
+              {{evt.title.fr}} </li>
+      </ul>
   </body>
 
 </html>
