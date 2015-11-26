@@ -34,20 +34,25 @@ var agendaevtsFake= {
 app.controller('oaCtl', function($scope, $http){
     $scope.agendadesc=agendadescFake;
     $scope.agendaevts=agendaevtsFake;
-    $scope.show=function(){
-        $scope.waiting="waiting for agenda description";
-        $scope.agendadesc=agendadescFake;
+    $scope.showForm=function(){
+        $scope.evtsDisplay=false;
+        $scope.formDisplay=true;
+    };
+    $scope.showEvts=function(){
+        $scope.evtsDisplay=true;
+        $scope.formDisplay=false;
+        $scope.waiting="waiting for agenda description"; // TODO: put in get.waiting
         $http.get('/api/agendadesc').success(function(data){
             $scope.agendadesc=data;
             $scope.waiting="";
         })
-    };
-    $scope.showEvts=function(){
-        $scope.agendaevts=agendaevtsFake;
-        $scope.waiting="waiting for agenda events";
+        $scope.waiting="waiting for agenda events"; // TODO: put in get.waiting
         $http.get('/api/agendaevts').success(function(data){
             $scope.agendaevts=data;
         $scope.waiting="";
         })
+    };
+    $scope.addEvt=function(){
+        $scope.waiting="new evt title: "+$scope.agendaevt.title;
     };
 });
