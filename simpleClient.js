@@ -19,6 +19,9 @@ function help( message ){
             +' without actually reqesting');
 }
 
+function simpleCallback(jsonObj){
+    console.log(jsonObj);
+}
 function runme(){
     if ( process.argv.length < 3 ){
         help("missing arg");
@@ -30,9 +33,9 @@ function runme(){
         return;
     }
     if( 'fake' === process.argv[3] )
-        oatools.oaGetterFake( method );
+        oatools.oaGetterFake( method, simpleCallback );
     else
-        oatools.oaGetter(method);
+        oatools.oaGetter( method, simpleCallback );
 }
 
 runme();
