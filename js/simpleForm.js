@@ -35,15 +35,19 @@ app.controller('oaCtl', function($scope, $http){
     $scope.agendadesc=agendadescFake;
     $scope.agendaevts=agendaevtsFake;
     $scope.show=function(){
+        $scope.waiting="waiting for agenda description";
         $scope.agendadesc=agendadescFake;
         $http.get('/api/agendadesc').success(function(data){
             $scope.agendadesc=data;
+            $scope.waiting="";
         })
     };
     $scope.showEvts=function(){
         $scope.agendaevts=agendaevtsFake;
+        $scope.waiting="waiting for agenda events";
         $http.get('/api/agendaevts').success(function(data){
             $scope.agendaevts=data;
+        $scope.waiting="";
         })
     };
 });

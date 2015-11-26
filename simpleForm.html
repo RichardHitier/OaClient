@@ -11,6 +11,7 @@
   <body ng-app="oaApp" ng-controller="oaCtl">
       <button ng-click="show()">Montre l'agenda</button>
       <button ng-click="showEvts()">Évènements</button>
+      <span>{{waiting}}</span>
       <h1>{{agendadesc.data.title}} ({{agendadesc.data.uid}})</h1>
       <ul>
           <li ng-repeat="evt in agendaevts.data">
