@@ -1,8 +1,8 @@
 /**
  * OpenAgenda simple requester lib
  *
- * provides a fake requester that will return static json
- * without real request.
+ * also provides a fake requester that will return static
+ * json without true http request.
  */
 var https=require('https');
 
