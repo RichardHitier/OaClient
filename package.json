@@ -1,8 +1,20 @@
 {
     "name": "OaClient",
     "version": "0.1.0",
+    "description": "Openagenda node client",
+    "author": {
+        "name": "Richard Hitier",
+        "email": "hitier.richard@gmail.com",
+        "url": "https://github.com/RichardHitier"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/RichardHitier/OaClient.git"
+    },
     "dependencies": {
-        "express": "~4.13",
-        "body-parser": "~1.14.0"
+        "express": "latest",
+        "moment": "latest",
+        "mailparser": "latest",
+        "body-parser": "latest"
     }
 }
