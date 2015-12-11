@@ -1,12 +1,16 @@
 var https = require('https');
 var querystring = require('querystring');
-var myKey='44ce07402c4c21ca26071733f9c80077';
-var tokenJson={};
+var oacfg = require('./oacfg');
+
+
+var secretKey=oacfg.oakeys.secretKey;
+
+var token_json={};
 
 
 var post_data = querystring.stringify({
   'grant-type' : 'authorization_code',
-  'code': myKey
+  'code': secretKey
 });
 
 var options = {
