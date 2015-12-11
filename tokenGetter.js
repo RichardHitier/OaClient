@@ -32,9 +32,7 @@ var request = https.request(options, function (response) {
   response.on('end', function () {
 
     if (response.statusCode == 200) {
-
       token_json = JSON.parse(str);
-
     } else {
       token_json = JSON.parse(str);
     }
