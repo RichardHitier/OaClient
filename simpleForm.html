@@ -10,24 +10,30 @@
 
   <body ng-app="oaApp" ng-controller="oaCtl">
      <button ng-click="showEvts()">Évènements</button>
-      <button ng-click="showForm()">Formulaire</button>
-      <span>{{waiting}}</span>
-      <form ng-show="formDisplay">
-          Titre: <input type="text" ng-model="agendaevt.title"/></br>
-          Date: <input type="text" ng-model="agendaevt.date"/></br>
-          Description: <input type="text" ng-model="agendaevt.desc"/></br>
-          <button ng-click="addEvt()">Ajouter</button>
-      </form>
-      <section ng-show="evtsDisplay">
-          <h1>{{agendadesc.data.title}} ({{agendadesc.data.uid}})</h1>
-          <table>
-              <tr ng-repeat="evt in agendaevts.data | orderBy:'-locations[0].dates[0].date'">
-                  <td>{{evt.locations[0].dates[0].date}}</td>
-                  <td>{{evt.locations[0].dates[0].timeStart}}</td>
-                  <td><a href="{{evt.link}}">{{evt.title.fr}}</a></td>
-              </tr>
-          </table>
-      </section>
+     <button ng-click="showForm()">Formulaire</button>
+     <button ng-click="showToken()">Token</button>
+     <span>{{waiting}}</span>
+     <form ng-show="formDisplay">
+         Titre: <input type="text" ng-model="agendaevt.title"/></br>
+         Date: <input type="text" ng-model="agendaevt.date"/></br>
+         Description: <input type="text" ng-model="agendaevt.desc"/></br>
+         <button ng-click="addEvt()">Ajouter</button>
+     </form>
+     <section ng-show="evtsDisplay">
+         <h1>{{agendadesc.data.title}} ({{agendadesc.data.uid}})</h1>
+         <table>
+             <tr ng-repeat="evt in agendaevts.data | orderBy:'-locations[0].dates[0].date'">
+                 <td>{{evt.locations[0].dates[0].date}}</td>
+                 <td>{{evt.locations[0].dates[0].timeStart}}</td>
+                 <td><a href="{{evt.link}}">{{evt.title.fr}}</a></td>
+             </tr>
+         </table>
+     </section>
+     <section ng-show="tokenDisplay">
+         <h1> token: {{agendadesc.token.access_token}}
+             expires: {{agendadesc.token.expires_in}}
+         </h1>
+     </section> 
   </body>
 
 </html>

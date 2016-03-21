@@ -4,7 +4,10 @@ var app = angular.module("oaApp",[]);
 var agendadescFake={
     data:{
         title: "waiting for agenda title", 
-        uid: "no uid"}
+        uid: "no uid"},
+    token:{
+       access_token: '0b3ba66f7404b8d57c92008e46e8e427',
+       expires_in: 901 }
 };
 
 var agendaevtsFake= {
@@ -34,13 +37,20 @@ var agendaevtsFake= {
 app.controller('oaCtl', function($scope, $http){
     $scope.agendadesc=agendadescFake;
     $scope.agendaevts=agendaevtsFake;
+    $scope.showToken=function(){
+        $scope.evtsDisplay=false;
+        $scope.formDisplay=false;
+        $scope.tokenDisplay=true;
+    };
     $scope.showForm=function(){
+        $scope.tokenDisplay=false;
         $scope.evtsDisplay=false;
         $scope.formDisplay=true;
     };
     $scope.showEvts=function(){
-        $scope.evtsDisplay=true;
+        $scope.tokenDisplay=false;
         $scope.formDisplay=false;
+        $scope.evtsDisplay=true;
         $scope.waiting="waiting for agenda description"; // TODO: put in get.waiting
         $http.get('/api/agendadesc').success(function(data){
             $scope.agendadesc=data;
